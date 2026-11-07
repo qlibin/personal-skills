@@ -32,6 +32,14 @@ Never copy skill folders by hand: a copy never gets fixes.
 | [llm-wiki](skills/llm-wiki/SKILL.md) | building or maintaining an Obsidian (markdown) wiki: ingest, query, lint, daily, weekly | symlink into the Claude config's `skills/` folder (local vaults only) |
 | [llm-wiki-notion](skills/llm-wiki-notion/SKILL.md) | a message starts with "wiki": capturing and maintaining the household second brain in Notion. Setup: [references/setup.md](skills/llm-wiki-notion/references/setup.md) | claude.ai upload (needed on mobile) |
 
+## Release
+
+```
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+Pushing a `v*` tag runs the frontmatter check, then publishes a GitHub Release with `<skill>.zip` for every skill. Uploading a zip to claude.ai stays a manual step.
+
 ## What's here
 
 | Path | Holds |
