@@ -1,0 +1,16 @@
+{
+  "name": "personal-skills",
+  "owner": {
+    "name": "Alexander Libin"
+  },
+  "metadata": {
+    "description": "Personal coding-agent skills and agents"
+  },
+  "plugins": [
+    {
+      "name": "personal-skills",
+      "source": "./",
+      "description": "Personal coding-agent skills and agents"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "personal-skills",
+  "description": "Personal coding-agent skills and agents",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Personal Skills",
+    "shortDescription": "Personal coding-agent skills",
+    "developerName": "Alexander Libin",
+    "category": "Productivity"
+  }
+}

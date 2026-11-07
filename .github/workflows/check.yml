@@ -1,0 +1,54 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - run: pip install --require-hashes -r tools/check-requirements.txt
+      - run: python3 tools/check.py
+
+  skills-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      # SkillSpector publishes no tags; this commit is the one Claude's Kitchen pins.
+      # Its dependencies and build backend come only from the hash-locked file, so nothing unreviewed is resolved at install time.
+      - run: |
+          pip install --require-hashes --no-deps -r tools/skillspector-requirements.txt
+          pip install --no-deps --no-build-isolation "git+https://github.com/NVIDIA/skillspector.git@1f210830deabc82727a73cf295c0678cfa0a896f"
+          pip check
+      # Exits 1 when a skill's risk score is above 50, and 2 on a scanner error.
+      - run: |
+          status=0
+          for skill in skills/*/; do
+            rm -f report.md
+            skillspector scan "$skill" --no-llm --format markdown --output report.md || status=1
+            if [[ -f report.md ]]; then
+              cat report.md >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+          exit "$status"
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+      # The gitleaks GitHub Action needs a paid licence on org repos; the CLI does not.
+      - run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.28.0@sha256:cdbb7c955abce02001a9f6c9f602fb195b7fadc1e812065883f695d1eeaba854 git /repo --redact --verbose
