@@ -815,9 +815,9 @@ langgraph-api==0.15.1 \
     --hash=sha256:2a435197949388ea18a55de92d1b404c6cd518b31d24ab5f00d566737cfda5dd \
     --hash=sha256:d2ae79d92940ffd68c8ecfe714168d883c885c7f55a6017b530ad05d7cc06194
     # via langgraph-cli
-langgraph-checkpoint==4.2.0 \
-    --hash=sha256:0547fd228935a0b758865de3a3d6d7a2537c308895d0f9ab092ce9151b5da942 \
-    --hash=sha256:51a593b6bee684b0818e5d6e58e28ab340c6db7794575056ce7bd1b746a84ed7
+langgraph-checkpoint==4.3.1 \
+    --hash=sha256:215a826935c8db4d9676e79fd95943e5b3847d78604390898e1d98581cc594e5 \
+    --hash=sha256:625e7c78a72b33e7c47f7e87ca051060fb90aa66f5fd551c472c08376fb669cb
     # via
     #   langgraph
     #   langgraph-api
@@ -837,9 +837,9 @@ langgraph-runtime-inmem==0.35.1 \
     # via
     #   langgraph-api
     #   langgraph-cli
-langgraph-sdk==0.4.5 \
-    --hash=sha256:d49a98a2ee8e0c494b101a7caf8061c8b4b94d3ee5ada0ea2dbe50903a5487b1 \
-    --hash=sha256:e03ef033a20d21288af496e9b6c08ae3afcc1b58dc5abcd37575bfd1a93045de
+langgraph-sdk==0.4.14 \
+    --hash=sha256:13eb1fee92504d87c1f0f43c8e213e7ba0a46bd23a07e3198e413d48efac5833 \
+    --hash=sha256:d47a6755890ae537aa80613a3138680ac77f5d256a2d3953af95a96328e6964d
     # via
     #   langgraph
     #   langgraph-api
@@ -2289,7 +2289,6 @@ zstandard==0.25.0 \
     #   langgraph-api
     #   langsmith
 
-# The following packages are considered to be unsafe in a requirements file:
 setuptools==84.0.0 \
     --hash=sha256:51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670 \
     --hash=sha256:f4695c21257f0d9b537ec2692c941d02ee143b7cc1276941349a546573b2ef73
