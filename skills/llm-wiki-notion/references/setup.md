@@ -13,9 +13,15 @@ For each person in the household. The wiki Owner does step 4 once; everyone else
 2. **Turn on code execution.** Settings → Capabilities → Code execution and file creation: on. Skills need it.
 3. **Install the skill.** Settings → Capabilities → Skills → Upload skill → choose `llm-wiki-notion.zip`. It then works in the Claude apps and in Claude Code signed in with the same account.
 4. **Owner only, once:** in Claude Code or desktop, say `wiki init`. Then share the teamspace with the other members.
-5. **Add the fallback line** to Settings → Profile → "What personal preferences should Claude consider". It keeps capture working where skills do not load (for example hands-free voice mode):
+5. **Save a memory entry** so Claude loads the skill automatically in every mode, including voice. In any Claude chat, say:
+
+   > Remember: whenever I start a message with "wiki", immediately load the llm-wiki-notion skill from /mnt/skills/plugins/llm-wiki-notion/SKILL.md and follow its instructions. No clarifying questions.
+
+   **Fallback** (voice or text if the skill cannot load): add this line to Settings → Profile → "What personal preferences should Claude consider":
 
    > When I say "wiki capture: …", create a row in the Notion database "Sources" under "LLM Wiki" with Status "New", Captured = today, Captured by = me, and my exact words as the body. Do nothing else.
+
+   You can also name the skill explicitly: *"Use the LLM wiki skill: wiki capture …"*
 
 6. **Test.** On your phone: `wiki capture: test note`. Check that a row appears in Sources → Inbox.
 
