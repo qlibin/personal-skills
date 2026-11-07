@@ -34,11 +34,13 @@ Never copy skill folders by hand: a copy never gets fixes.
 
 ## Release
 
+Publish a release in the GitHub UI with a new `v*` tag, or push the tag:
+
 ```
-git tag v1.0.0 && git push origin v1.0.0
+git tag v1.0.1 && git push origin v1.0.1
 ```
 
-Pushing a `v*` tag runs the frontmatter check, then publishes a GitHub Release with `<skill>.zip` for every skill. Uploading a zip to claude.ai stays a manual step.
+Either way, the tag runs the frontmatter check, then attaches `<skill>.zip` for every skill to the GitHub Release, creating the release if needed. Uploading a zip to claude.ai stays a manual step.
 
 ## What's here
 
